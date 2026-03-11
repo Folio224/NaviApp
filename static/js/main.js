@@ -53,12 +53,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     await page.render(renderContext).promise;
 
-                    slideDiv.appendChild(canvas);
+                    // --- NEW: PREMIUM LOCK LOGIC ---
+                    // Currently hardcoded to true so you can test it!
+                    // Later, we will update this to check the user's actual account status.
+                    const isFreeTier = true;
+
+                    if (pageNum > 3 && isFreeTier) {
+                        // Create the wrapper for the CSS absolute positioning
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'slide-wrapper';
+
+                        // Blur the canvas (stops right-click downloads too!)
+                        canvas.classList.add('slide-locked-canvas');
+
+                        // Create the glowing lock badge
+                        const lockBadge = document.createElement('div');
+                        lockBadge.className = 'lock-overlay';
+                        lockBadge.innerHTML = `
+                            <i data-lucide="lock"></i>
+                            <span>Premium Content</span>
+                            <p>Upgrade to unlock</p>
+                        `;
+
+                        wrapper.appendChild(canvas);
+                        wrapper.appendChild(lockBadge);
+                        slideDiv.appendChild(wrapper);
+                    } else {
+                        // Normal unlocked slide (Pages 1 & 2)
+                        slideDiv.appendChild(canvas);
+                    }
+                    // --- END PREMIUM LOGIC ---
+
                     pdfSliderContainer.appendChild(slideDiv);
                 }
 
                 // Initial counter update
                 pageCounter.textContent = `Page 1 of ${pdf.numPages}`;
+
+                // Force Lucide to draw the new lock icons we just injected
+                if (window.lucide) {
+                    lucide.createIcons();
+                }
 
                 // Update page counter on scroll
                 pdfSliderContainer.addEventListener('scroll', () => {
@@ -108,17 +143,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 300);
         };
 
-        if(closePdfSliderBtn) closePdfSliderBtn.addEventListener('click', closeSlider);
+        if (closePdfSliderBtn) closePdfSliderBtn.addEventListener('click', closeSlider);
 
         pdfSliderOverlay.addEventListener('click', (e) => {
             if (e.target === pdfSliderOverlay) closeSlider();
         });
     }
+
     // --- RESPONSIVE PDF SLIDER LOGIC (400px Height) ---
     const productCards = document.querySelectorAll('.product-card[data-pdf-url]');
 
     if (productCards.length > 0) {
 
+        // Helper: Render a single page to a canvas
         // Helper: Render a single page to a canvas
         const renderThumbnail = async (pdfDoc, pageNum, container) => {
             try {
@@ -129,10 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const ctx = canvas.getContext('2d');
 
                 // SCALE CALCULATION:
-                // We want the image to be exactly 400px high to match CSS
                 const unscaledViewport = page.getViewport({ scale: 1 });
                 const scaleFactor = 400 / unscaledViewport.height;
-
                 const viewport = page.getViewport({ scale: scaleFactor });
 
                 canvas.height = viewport.height;
@@ -144,12 +179,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 await page.render(renderContext).promise;
-                container.appendChild(canvas);
+
+                // --- NEW: PREMIUM LOCK FOR MINI-SLIDERS ---
+                const isFreeTier = true; // Hardcoded for testing
+
+                // We need to figure out what gets the click event
+                let clickableElement;
+
+                if (pageNum > 3 && isFreeTier) {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'mini-slide-wrapper';
+
+                    // Blur the canvas
+                    canvas.classList.add('slide-locked-canvas');
+
+                    // Create the full lock badge (scaled down slightly to fit)
+                    const lockBadge = document.createElement('div');
+                    lockBadge.className = 'lock-overlay';
+                    lockBadge.innerHTML = `
+                        <i data-lucide="lock" style="width:24px; height:24px; margin-bottom: 0.2rem;"></i>
+                        <span style="font-size: 0.95rem; font-weight: 700; color: white;">Premium Content</span>
+                        <p style="font-size: 0.75rem; margin: 0; color: var(--color-text-secondary);">Upgrade to unlock</p>
+                    `;
+
+                    wrapper.appendChild(canvas);
+                    wrapper.appendChild(lockBadge);
+                    container.appendChild(wrapper);
+
+                    // THIS IS THE MAGIC LINE: Force Lucide to draw the newly injected icon!
+                    if (window.lucide) {
+                        lucide.createIcons();
+                    }
+
+                    clickableElement = wrapper; // Wrapper handles the click if locked
+                } else {
+                    container.appendChild(canvas);
+                    clickableElement = canvas; // Canvas handles the click if unlocked
+                }
+                // --- END MINI-SLIDER LOCK ---
 
                 // Click listener: Clicking a slide opens the full reader
-                canvas.addEventListener('click', () => {
-                     const mainBtn = container.parentElement.querySelector('.read-book-btn');
-                     if(mainBtn) mainBtn.click();
+                clickableElement.addEventListener('click', () => {
+                    const mainBtn = container.parentElement.querySelector('.read-book-btn');
+                    if (mainBtn) mainBtn.click();
                 });
 
             } catch (err) {
@@ -377,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return candidate.content.parts[0].text;
             } else {
                 console.warn("Invalid response structure from server:", result);
-                if(candidate && candidate.finishReason) {
+                if (candidate && candidate.finishReason) {
                     return `I couldn't generate a response. Reason: ${candidate.finishReason}`;
                 }
                 throw new Error("Invalid response structure received from server.");
@@ -486,7 +558,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Check for login *before* doing anything
             const token = localStorage.getItem('token');
             if (!token) {
-                 showNotification("Please sign in to analyze a file.");
+                showNotification("Please sign in to analyze a file.");
                 return;
             }
 
@@ -731,7 +803,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Check for login *before* opening modal
             const token = localStorage.getItem('token');
             if (!token) {
-                 showNotification("Please sign in to manage your interests.");
+                showNotification("Please sign in to manage your interests.");
                 return;
             }
 
@@ -786,7 +858,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let selected = getSelectedInterests();
             let custom = getCustomInterests();
             const exists = custom.some(i => i.toLowerCase() === newValue.toLowerCase()) ||
-                           ALL_INTERESTS.some(i => i.toLowerCase() === newValue.toLowerCase());
+                ALL_INTERESTS.some(i => i.toLowerCase() === newValue.toLowerCase());
             if (!exists) {
                 custom.push(newValue);
                 selected.push(newValue);
@@ -856,7 +928,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Reload if we're on an auth-only page like 'account'
         const authPages = ['/account', '/settings', '/purchase-history'];
         if (authPages.includes(window.location.pathname)) {
-             window.location.href = '/';
+            window.location.href = '/';
         }
     }
     if (logoutButton) {
@@ -879,7 +951,7 @@ document.addEventListener('DOMContentLoaded', () => {
             activeLinks.forEach(link => link.classList.add('active'));
             if (['account', 'settings', 'purchase_history'].includes(pageKey)) {
                 const accountIcon = document.querySelector('.nav-item-dropdown .nav-icon');
-                if(accountIcon) accountIcon.classList.add('active');
+                if (accountIcon) accountIcon.classList.add('active');
             }
         } catch (e) {
             console.error("Could not set active nav link:", e);

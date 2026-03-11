@@ -67,8 +67,15 @@ body::before {
 }
 
 @keyframes gradientShift {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
 }
 
 /* --- Header & Navigation --- */
@@ -104,11 +111,14 @@ nav {
 }
 
 .logo-img {
-    height: 45px; /* Adjust height as needed */
+    height: 45px;
+    /* Adjust height as needed */
     width: auto;
-    border-radius: var(--radius-sm); /* Optional rounding */
+    border-radius: var(--radius-sm);
+    /* Optional rounding */
     object-fit: contain;
 }
+
 /* --- END LOGO STYLES --- */
 
 .nav-links {
@@ -332,8 +342,13 @@ nav {
 }
 
 @keyframes shimmer {
-    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
 }
 
 .hero::after {
@@ -350,18 +365,39 @@ nav {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-30px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-30px);
+    }
 }
 
 @keyframes fadeInLeft {
-    from { opacity: 0; transform: translateX(-50px); }
-    to { opacity: 1; transform: translateX(0); }
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes fadeInRight {
-    from { opacity: 0; transform: translateX(50px); }
-    to { opacity: 1; transform: translateX(0); }
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* --- Stats Section --- */
@@ -403,7 +439,8 @@ nav {
     transform: translateY(30px);
     transition: all 0.8s ease;
 }
-.interests-bar + .products-section {
+
+.interests-bar+.products-section {
     padding-top: 3rem;
 }
 
@@ -606,6 +643,7 @@ nav {
     transition: all 0.3s ease;
     display: flex;
 }
+
 .chat-close-btn:hover {
     background: rgba(255, 255, 255, 0.1);
     color: var(--color-text-primary);
@@ -649,9 +687,11 @@ nav {
 .chat-message.bot {
     align-self: flex-start;
 }
+
 .chat-message.bot .chat-avatar {
     background: var(--color-accent-purple);
 }
+
 .chat-message.bot p {
     background: rgba(123, 104, 238, 0.2);
     color: var(--color-text-primary);
@@ -661,10 +701,12 @@ nav {
 .chat-message.user {
     align-self: flex-end;
 }
+
 .chat-message.user .chat-avatar {
     background: var(--color-accent-blue);
     order: 2;
 }
+
 .chat-message.user p {
     background: rgba(0, 212, 255, 0.2);
     color: var(--color-text-primary);
@@ -699,6 +741,7 @@ nav {
     font-size: 1rem;
     font-family: var(--font-primary);
 }
+
 #chatInput:focus {
     outline: none;
     border-color: var(--color-accent-purple);
@@ -720,16 +763,19 @@ nav {
     justify-content: center;
     transition: all 0.3s ease;
 }
+
 .chat-send-btn:hover {
     transform: scale(1.05);
     box-shadow: var(--shadow-glow-blue);
 }
+
 .chat-send-btn:disabled {
     background: var(--color-text-muted);
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
 }
+
 .chat-send-btn .send-icon {
     width: 20px;
     height: 20px;
@@ -755,7 +801,9 @@ nav {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* --- Scroll to Top Button --- */
@@ -895,7 +943,8 @@ nav {
     .products-section {
         padding: 4rem 1.5rem;
     }
-    .interests-bar + .products-section {
+
+    .interests-bar+.products-section {
         padding-top: 2rem;
     }
 
@@ -928,6 +977,7 @@ nav {
         flex-direction: column;
         gap: 0.75rem;
     }
+
     .custom-interest-adder {
         width: 100%;
     }
@@ -1058,6 +1108,7 @@ nav {
     /* Make this card non-clickable, unlike other product cards */
     cursor: default;
 }
+
 #profileCard:hover {
     /* Disable hover effect */
     transform: none;
@@ -1069,11 +1120,14 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
-    gap: 1rem; /* Add gap for wrapping */
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+    gap: 1rem;
+    /* Add gap for wrapping */
     padding: 1.5rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .profile-row:last-of-type {
     border-bottom: none;
 }
@@ -1095,6 +1149,7 @@ nav {
     align-items: center;
     gap: 1rem;
 }
+
 /* --- END OF NEW PROFILE STYLES --- */
 
 
@@ -1197,6 +1252,7 @@ nav {
     font-size: 1rem;
     font-family: var(--font-primary);
 }
+
 .custom-interest-adder input:focus {
     outline: none;
     border-color: var(--color-accent-purple);
@@ -1228,17 +1284,21 @@ nav {
     transition: all 0.2s ease;
     padding: 0;
 }
+
 .remove-interest-btn:hover {
     background: rgba(0, 0, 0, 0.2);
     color: var(--color-text-primary);
 }
+
 .interest-item.selected .remove-interest-btn {
     color: rgba(255, 255, 255, 0.7);
 }
+
 .interest-item.selected .remove-interest-btn:hover {
     background: rgba(0, 0, 0, 0.3);
     color: white;
 }
+
 .remove-interest-btn .lucide {
     width: 16px;
     height: 16px;
@@ -1246,50 +1306,54 @@ nav {
 
 /* --- Custom File Input Button Style --- */
 #bookUploader {
-  color: var(--color-text-muted);
-  font-family: var(--font-primary);
+    color: var(--color-text-muted);
+    font-family: var(--font-primary);
 }
+
 #bookUploader::file-selector-button {
-  font-family: var(--font-primary);
-  font-weight: 700;
-  font-size: 0.9rem;
-  padding: 0.5rem 1rem;
-  background: transparent;
-  color: var(--color-accent-blue);
-  border: 2px solid var(--color-accent-blue);
-  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all 0.3s ease;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    color: var(--color-accent-blue);
+    border: 2px solid var(--color-accent-blue);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
+
 #bookUploader::file-selector-button:hover {
-  background: rgba(0, 212, 255, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(0, 212, 255, 0.4);
+    background: rgba(0, 212, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0, 212, 255, 0.4);
 }
 
 /* --- Create Book Modal Textarea Style --- */
 .chat-modal .prompt-textarea {
-  width: 100%;
-  min-height: 150px;
-  padding: 0.9rem 1.2rem;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(123, 104, 238, 0.4);
-  background: var(--color-bg-dark);
-  color: var(--color-text-primary);
-  font-size: 1rem;
-  font-family: var(--font-primary);
-  resize: vertical;
+    width: 100%;
+    min-height: 150px;
+    padding: 0.9rem 1.2rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(123, 104, 238, 0.4);
+    background: var(--color-bg-dark);
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    resize: vertical;
 }
+
 .chat-modal .prompt-textarea:focus {
-  outline: none;
-  border-color: var(--color-accent-purple);
-  box-shadow: 0 0 15px rgba(123, 104, 238, 0.3);
+    outline: none;
+    border-color: var(--color-accent-purple);
+    box-shadow: 0 0 15px rgba(123, 104, 238, 0.3);
 }
+
 .chat-modal .prompt-textarea::placeholder {
-  color: var(--color-text-muted);
-  opacity: 1;
-  font-style: italic;
+    color: var(--color-text-muted);
+    opacity: 1;
+    font-style: italic;
 }
 
 /* --- Full-Screen Loader Overlay --- */
@@ -1311,17 +1375,20 @@ nav {
     visibility: hidden;
     pointer-events: none;
 }
+
 .loader-overlay.visible {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
 }
+
 .loader-overlay .spinner {
     width: 60px;
     height: 60px;
     border: 4px solid rgba(255, 255, 255, 0.2);
     border-top-color: var(--color-accent-blue);
 }
+
 .loader-overlay p {
     color: var(--color-text-primary);
     font-size: 1.2rem;
@@ -1335,6 +1402,7 @@ nav {
     height: 90vh;
     max-height: 800px;
 }
+
 #bookResultBody {
     flex-grow: 1;
     overflow-y: auto;
@@ -1355,6 +1423,7 @@ nav {
     padding-bottom: 0.5rem;
     margin-bottom: 2rem;
 }
+
 #bookResultBody h2 {
     font-size: 1.8rem;
     font-weight: 700;
@@ -1364,22 +1433,26 @@ nav {
     border-bottom: 1px solid rgba(0, 212, 255, 0.3);
     padding-bottom: 0.5rem;
 }
+
 #bookResultBody p {
     font-size: 1rem;
     line-height: 1.8;
     color: var(--color-text-secondary);
     margin-bottom: 1.5rem;
 }
+
 #bookResultBody ul,
 #bookResultBody ol {
     margin-left: 1.5rem;
     margin-bottom: 1.5rem;
     color: var(--color-text-secondary);
 }
+
 #bookResultBody li {
     margin-bottom: 0.5rem;
     line-height: 1.7;
 }
+
 #bookResultBody code {
     background: rgba(123, 104, 238, 0.2);
     color: var(--color-accent-purple);
@@ -1387,6 +1460,7 @@ nav {
     border-radius: var(--radius-sm);
     font-family: monospace;
 }
+
 #bookResultBody pre {
     background: #000;
     padding: 1rem;
@@ -1394,6 +1468,7 @@ nav {
     overflow-x: auto;
     margin-bottom: 1.5rem;
 }
+
 #bookResultBody pre code {
     background: none;
     padding: 0;
@@ -1405,10 +1480,12 @@ nav {
     align-items: center;
     gap: 0.5rem;
 }
+
 .nav-auth-desktop {
     display: flex;
     gap: 0.5rem;
 }
+
 .btn-auth-secondary,
 .btn-auth-primary {
     font-size: 0.9rem;
@@ -1416,11 +1493,13 @@ nav {
     padding: 0.5rem 1rem;
     border-radius: var(--radius-sm);
 }
+
 .btn-auth-secondary {
     background: transparent;
     color: var(--color-text-secondary);
     border: 1px solid transparent;
 }
+
 .btn-auth-secondary:hover {
     background: rgba(123, 104, 238, 0.2);
     color: var(--color-accent-purple);
@@ -1428,24 +1507,29 @@ nav {
     transform: none;
     box-shadow: none;
 }
+
 .btn-auth-secondary.active {
     background: rgba(123, 104, 238, 0.3);
     color: var(--color-accent-purple);
 }
+
 .btn-auth-primary {
     background: var(--color-accent-purple);
     color: white;
     box-shadow: none;
 }
+
 .btn-auth-primary:hover {
     background: var(--color-accent-blue);
     transform: none;
     box-shadow: var(--shadow-glow-blue);
 }
+
 .btn-auth-primary.active {
     background: var(--color-accent-blue);
     box-shadow: var(--shadow-glow-blue);
 }
+
 .nav-auth-mobile {
     display: none;
 }
@@ -1458,6 +1542,7 @@ nav {
     align-items: center;
     min-height: 80vh;
 }
+
 .auth-container {
     width: 100%;
     max-width: 450px;
@@ -1467,6 +1552,7 @@ nav {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-large);
 }
+
 .auth-title {
     font-size: 2rem;
     font-weight: 800;
@@ -1477,27 +1563,32 @@ nav {
     text-align: center;
     margin-bottom: 0.75rem;
 }
+
 .auth-subtitle {
     font-size: 1rem;
     color: var(--color-text-secondary);
     text-align: center;
     margin-bottom: 2.5rem;
 }
+
 .auth-form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
+
 .auth-form-group {
     display: flex;
     flex-direction: column;
 }
+
 .auth-form-group label {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--color-text-secondary);
     margin-bottom: 0.5rem;
 }
+
 .auth-input {
     width: 100%;
     padding: 0.9rem 1.2rem;
@@ -1509,11 +1600,13 @@ nav {
     font-family: var(--font-primary);
     transition: all 0.3s ease;
 }
+
 .auth-input:focus {
     outline: none;
     border-color: var(--color-accent-purple);
     box-shadow: 0 0 15px rgba(123, 104, 238, 0.3);
 }
+
 .auth-button {
     padding: 1.2rem 2.5rem;
     border: none;
@@ -1535,21 +1628,25 @@ nav {
     width: 100%;
     margin-top: 1rem;
 }
+
 .auth-button:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-glow-blue-hover);
 }
+
 .auth-switch-link {
     font-size: 0.9rem;
     color: var(--color-text-secondary);
     text-align: center;
     margin-top: 2rem;
 }
+
 .auth-switch-link a {
     color: var(--color-accent-blue);
     font-weight: 600;
     text-decoration: none;
 }
+
 .auth-switch-link a:hover {
     text-decoration: underline;
 }
@@ -1559,9 +1656,11 @@ nav {
     .nav-action-items {
         display: none;
     }
+
     .nav-auth-mobile {
         display: block;
     }
+
     .auth-section {
         padding: 4rem 1.5rem;
     }
@@ -1582,9 +1681,12 @@ nav {
 
 /* 1. Define the Gold Color */
 :root {
-    --color-gold: #FFD700; /* Standard Gold */
-    --color-gold-dim: rgba(255, 215, 0, 0.1); /* For background hover */
-    --shadow-gold: 0 0 15px rgba(255, 215, 0, 0.4); /* For the glow */
+    --color-gold: #FFD700;
+    /* Standard Gold */
+    --color-gold-dim: rgba(255, 215, 0, 0.1);
+    /* For background hover */
+    --shadow-gold: 0 0 15px rgba(255, 215, 0, 0.4);
+    /* For the glow */
 }
 
 /* 2. The Button Style */
@@ -1596,7 +1698,8 @@ nav {
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
     text-decoration: none;
-    padding: 0.5rem 1.2rem; /* Matches your other header buttons */
+    padding: 0.5rem 1.2rem;
+    /* Matches your other header buttons */
     border-radius: var(--radius-sm);
     display: inline-flex;
     align-items: center;
@@ -1606,18 +1709,22 @@ nav {
 /* 3. Hover Effect - This creates the "First Attention" without hurting eyes */
 .btn-gold:hover {
     background: var(--color-gold-dim);
-    box-shadow: var(--shadow-gold); /* The "Golden Glow" */
+    box-shadow: var(--shadow-gold);
+    /* The "Golden Glow" */
     transform: translateY(-2px);
-    color: #fff; /* White text on hover for contrast */
+    color: #fff;
+    /* White text on hover for contrast */
     border-color: #fff;
 }
 
 /* 4. Mobile Menu Specific Style */
 .waitlist-link-mobile {
-    color: var(--color-gold) !important; /* Force gold color in mobile menu */
+    color: var(--color-gold) !important;
+    /* Force gold color in mobile menu */
     border: 1px solid rgba(255, 215, 0, 0.3);
     margin-top: 0.5rem;
 }
+
 /* --- Desktop: Hide mobile-only elements --- */
 .mobile-only {
     display: none;
@@ -1629,25 +1736,30 @@ nav {
         display: block;
     }
 }
+
 /* --- NEW: PDF Slider Styles --- */
 
 /* Make the modal wider for the slider */
 .pdf-slider-modal {
-    max-width: 90vw !important; /* 90% of viewport width */
+    max-width: 90vw !important;
+    /* 90% of viewport width */
     height: 90vh !important;
     max-height: none !important;
-    background: #000; /* Black background for focus */
+    background: #000;
+    /* Black background for focus */
 }
 
 /* The scrollable container */
 .pdf-slider-container {
     display: flex;
     flex-direction: row;
-    overflow-x: auto; /* Horizontal scroll */
+    overflow-x: auto;
+    /* Horizontal scroll */
     overflow-y: hidden;
     height: 100%;
     width: 100%;
-    scroll-snap-type: x mandatory; /* Makes it snap to pages */
+    scroll-snap-type: x mandatory;
+    /* Makes it snap to pages */
     scroll-behavior: smooth;
     align-items: center;
     padding: 0 2rem;
@@ -1656,11 +1768,14 @@ nav {
 
 /* Each slide (page) */
 .pdf-slide {
-    flex: 0 0 auto; /* Don't shrink */
-    height: 95%; /* Almost full height */
+    flex: 0 0 auto;
+    /* Don't shrink */
+    height: 95%;
+    /* Almost full height */
     width: auto;
-    scroll-snap-align: center; /* Snap to center */
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    scroll-snap-align: center;
+    /* Snap to center */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     border-radius: 4px;
     background: white;
     display: flex;
@@ -1679,13 +1794,16 @@ nav {
 .pdf-slider-container::-webkit-scrollbar {
     height: 8px;
 }
+
 .pdf-slider-container::-webkit-scrollbar-track {
     background: #111;
 }
+
 .pdf-slider-container::-webkit-scrollbar-thumb {
     background: var(--color-accent-purple);
     border-radius: 4px;
 }
+
 /* --- UPDATED: Large PDF Slider (Readable) --- */
 .pdf-mini-slider {
     display: flex;
@@ -1693,7 +1811,8 @@ nav {
     overflow-x: auto;
     padding: 15px 5px;
     margin: 1rem 0;
-    min-height: 420px; /* Increased to fit larger pages */
+    min-height: 420px;
+    /* Increased to fit larger pages */
 
     /* Snap Logic: Makes it feel like a carousel */
     scroll-snap-type: x mandatory;
@@ -1701,13 +1820,15 @@ nav {
     /* Scrollbar Styling */
     scrollbar-width: thin;
     scrollbar-color: var(--color-accent-purple) rgba(255, 255, 255, 0.05);
-    border-top: 1px solid rgba(255,255,255,0.05);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .mini-page-canvas {
-    height: 400px; /* Fixed height for readability */
-    width: auto;   /* Width adjusts automatically to keep ratio */
+    height: 400px;
+    /* Fixed height for readability */
+    width: auto;
+    /* Width adjusts automatically to keep ratio */
 
     /* Snap Logic */
     scroll-snap-align: center;
@@ -1726,11 +1847,13 @@ nav {
 
 /* --- Improved Button Styles --- */
 .btn-block {
-    width: 100%; /* Makes button fill the card width */
+    width: 100%;
+    /* Makes button fill the card width */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: auto; /* Push to bottom if flex container allows */
+    margin-top: auto;
+    /* Push to bottom if flex container allows */
 }
 
 /* Spinner for the thumbnail area */
@@ -1743,13 +1866,15 @@ nav {
     animation: spin 1s linear infinite;
     margin: auto;
 }
+
 /* --- Scroll Hint / Bouncing Arrow --- */
 .scroll-hint-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 4rem 0 1rem 0; /* Space between grid and analyzer */
+    margin: 4rem 0 1rem 0;
+    /* Space between grid and analyzer */
     cursor: pointer;
     text-decoration: none;
     opacity: 0.6;
@@ -1764,7 +1889,8 @@ nav {
 .scroll-hint-text {
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--color-accent-blue); /* Matches your theme */
+    color: var(--color-accent-blue);
+    /* Matches your theme */
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 0.5rem;
@@ -1778,22 +1904,34 @@ nav {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
+
     40% {
         transform: translateY(-10px);
     }
+
     60% {
         transform: translateY(-5px);
     }
 }
+
 /* --- Disabled Navigation Links --- */
 .nav-link.disabled {
-    color: var(--color-text-muted) !important; /* Gray color */
-    opacity: 0.4; /* Fade it out */
-    cursor: not-allowed; /* Show 'stop' cursor on hover */
-    pointer-events: none; /* Physically prevents clicking */
+    color: var(--color-text-muted) !important;
+    /* Gray color */
+    opacity: 0.4;
+    /* Fade it out */
+    cursor: not-allowed;
+    /* Show 'stop' cursor on hover */
+    pointer-events: none;
+    /* Physically prevents clicking */
 }
 
 /* Remove hover effects for disabled links */
@@ -1806,4 +1944,78 @@ nav {
 /* Remove the sliding underline effect */
 .nav-link.disabled::before {
     display: none;
+}
+
+/* --- PREMIUM LOCKED SLIDES --- */
+.slide-wrapper {
+    position: relative;
+    flex-shrink: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* We blur the canvas and darken it slightly so the lock pops */
+.slide-locked-canvas {
+    filter: blur(8px) brightness(0.6);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* The lock badge that sits on top */
+.lock-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 20, 45, 0.85);
+    backdrop-filter: blur(4px);
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    box-shadow: var(--shadow-glow-blue);
+    z-index: 10;
+    text-align: center;
+}
+
+.lock-overlay i {
+    width: 32px;
+    height: 32px;
+    color: var(--color-accent-blue);
+    margin-bottom: 0.5rem;
+}
+
+.lock-overlay span {
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.lock-overlay p {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* --- PREMIUM LOCK FOR MINI-SLIDERS --- */
+.mini-slide-wrapper {
+    position: relative;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    /* Keeps the carousel snapping */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Ensures the hover effect still works even when the canvas is blurred */
+.mini-slide-wrapper:hover .mini-page-canvas {
+    border-color: var(--color-accent-blue);
 }
