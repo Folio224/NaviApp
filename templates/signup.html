@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up - Navimind{% endblock %}
+
+{% block content %}
+
+<section class="auth-section">
+    <div class="auth-container">
+        <h2 class="auth-title">Create Your Account</h2>
+        <p class="auth-subtitle">Join Navimind to unlock your full learning potential.</p>
+        
+        <!-- This form is now handled by main.js -->
+        <form id="signupForm" class="auth-form">
+            <div class="auth-form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="auth-input" required>
+            </div>
+            <div class="auth-form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" class="auth-input" required>
+            </div>
+            <div class="auth-form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="auth-input" required>
+            </div>
+             <div class="auth-form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="auth-input" required>
+            </div>
+            
+            <button type="submit" class="auth-button">Create Account</button>
+        </form>
+        
+        <p class="auth-switch-link">
+            Already have an account? <a href="{{ url_for('login') }}">Sign In</a>
+        </p>
+    </div>
+</section>
+
+{% endblock %}

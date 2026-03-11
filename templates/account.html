@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title %}My Account - Navimind{% endblock %}
+
+{% block content %}
+
+<!-- --- Profile Section --- -->
+<section class="products-section visible" style="padding-top: 4rem; padding-bottom: 2rem;">
+    <div class="container">
+
+        <!-- Wrapper div to control the card's width -->
+        <div class="profile-card-wrapper">
+            <div class="product-card" id="profileCard">
+                <h2 class="section-title" style="font-size: 2rem; margin-bottom: 2rem;">
+                    <i data-lucide="user-check" class="title-icon"></i>
+                    My Profile
+                </h2>
+
+                <!-- Row for Username (Not editable) -->
+                <div class="profile-row">
+                    <span class="profile-label">Username</span>
+                    <span class="profile-value" id="profileUsername">Loading...</span>
+                </div>
+
+                <!-- Row for Email (Editable) -->
+                <div class="profile-row">
+                    <span class="profile-label">Email</span>
+
+                    <!-- Display Mode (Visible by default) -->
+                    <div class="profile-value-group" id="emailDisplayMode">
+                        <span class="profile-value" id="profileEmail">Loading...</span>
+                        <button class="btn btn-secondary btn-small" id="editEmailBtn">
+                            <i data-lucide="edit-3" class="btn-icon-small"></i>
+                            Edit
+                        </button>
+                    </div>
+
+                    <!-- Edit Mode (Hidden by default) -->
+                    <div class="profile-value-group hidden" id="emailEditMode">
+                        <input type="email" id="emailInput" class="auth-input" style="padding: 0.5rem 1rem; font-size: 1rem;">
+                        <button class="btn btn-secondary btn-small" id="cancelEmailBtn">Cancel</button>
+                        <button class="btn btn-primary btn-small" id="saveEmailBtn">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- --- End of Profile Section --- -->
+
+
+<section class="products-section visible" style="padding-top: 2rem;">
+    <div class="container">
+        <h2 class="section-title"><i data-lucide="layout-grid" class="title-icon"></i> My Dashboard</h2>
+        <p class="section-description">Manage your interests, view your generated content, and more.</p>
+
+        <!-- Existing Product Grid -->
+        <div class="product-grid account-grid">
+
+            <!-- --- THIS CARD IS UPDATED --- -->
+            <div class="product-card" id="myInterestsCard">
+                <i data-lucide="shapes" class="card-icon"></i>
+                <h3 class="card-title">My Interests</h3>
+
+                <!-- 1. Added the missing <p class="card-description"> wrapper -->
+                <p class="card-description">
+                    Your topics help us recommend and create content just for you.
+                    <!-- 2. Moved the interests-list inside it -->
+                    <div class="interests-list" id="interestsDisplayArea" style="margin-top: 1rem;">
+                        <p style="color: var(--color-text-muted); font-style: italic;">Loading...</p>
+                    </div>
+                </p>
+                <!-- 3. Changed <button> to an <a> tag to fix the white text -->
+                <a href="#" class="card-link stretched-link" id="manageInterestsBtn">Manage Interests</a>
+            </div>
+            <!-- --- END OF UPDATE --- -->
+
+            <div class="product-card">
+                <i data-lucide="book-open-check" class="card-icon"></i>
+                <h3 class="card-title">My Books</h3>
+                <p class="card-description">View all the books you've created with the AI author.</p>
+                <a href="#" class="card-link stretched-link">View My Books</a>
+            </div>
+
+            <div class="product-card">
+                <i data-lucide="file-text" class="card-icon"></i>
+                <h3 class="card-title">My Summaries</h3>
+                <p class="card-description">Access all your saved file summaries and analyses.</p>
+                <a href="#" class="card-link stretched-link">View My Summaries</a>
+            </div>
+
+            <div class="product-card">
+                <i data-lucide="history" class="card-icon"></i>
+                <h3 class="card-title">Purchase History</h3>
+                <p class="card-description">Review your past orders and invoices for coaching and services.</p>
+                <a href="{{ url_for('purchase_history') }}" class="card-link stretched-link">View History</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Interests Modal (Existing) -->
+<div class="chat-modal-overlay" id="interestsModalOverlay">
+    <div class="chat-modal">
+        <div class="chat-modal-header">
+            <h2>Manage Your Interests</h2>
+            <button class="chat-close-btn" id="closeInterestsModalBtn" aria-label="Close modal">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <div class="chat-modal-body" id="interestsModalBody">
+            <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">Select the topics that you're most interested in. This will help us recommend the right content for you.</p>
+
+            <div class="interest-selection-list" id="interestSelectionList">
+                <!-- Loaded by main.js -->
+            </div>
+
+        </div>
+        <div class="chat-modal-footer">
+
+            <div class="custom-interest-adder">
+                <input type="text" id="customInterestInput" placeholder="Add a custom interest...">
+                <button class="btn btn-primary btn-small" id="addCustomInterestBtn">
+                    <i data-lucide="plus" class="btn-icon-small"></i>
+                    <span>Add</span>
+                </button>
+            </div>
+
+            <button class="btn btn-primary" id="doneInterestsModalBtn">Done</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Virtual environments (never copy these into the image)
+venv/
+myenv/
+.venv/
+env/
+
+# Secrets — never bake these into the image!
+.env
+
+# Database file (use a managed DB or persistent volume in production)
+*.db
+*.sqlite3
+
+# IDE & OS
+.idea/
+.vscode/
+.DS_Store
+
+# Temp files
+temp_uploads/
+
+# Git
+.git/
+.gitignore

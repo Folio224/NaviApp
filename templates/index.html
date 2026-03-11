@@ -1,0 +1,48 @@
+<!-- This tells the server to wrap this file with 'base.html' -->
+{% extends "base.html" %}
+
+<!-- Sets the page title in base.html -->
+{% block title %}Navimind - Transform Your Learning{% endblock %}
+
+<!-- This injects the following HTML into the 'content' block of base.html -->
+{% block content %}
+
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <!-- UPDATED H1 STRUCTURE -->
+        <h1 id="heroTitle">
+            <span class="hero-line-white">Stop the chaos.</span>
+            <br>
+            <span class="hero-line-gradient">Start the control.</span>
+        </h1>
+
+        <p id="heroDescription">Discover our comprehensive range of digital products designed to accelerate your growth. From interactive books to AI-powered learning agents, we've got everything you need to succeed.</p>
+        <div class="cta-buttons">
+            <button class="btn btn-primary" id="getStartedBtn">Get Started</button>
+            <button class="btn btn-secondary" id="exploreBtn">Explore Products</button>
+        </div>
+        <div class="stats" id="stats">
+            <div class="stat-item">
+                <span class="stat-number" data-target="10000">23632</span>
+                <span class="stat-label">Active Users</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="500">12</span>
+                <span class="stat-label">Digital Products</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="98">95</span>%
+                <span class="stat-label">Satisfaction Rate</span>
+            </div>
+        </div>
+    </div>
+    <div class="hero-image">
+        <div class="image-placeholder" id="heroImage">
+            <i data-lucide="layers" style="width: 100px; height: 100px; color: #7b68ee;"></i>
+        </div>
+    </div>
+</section>
+
+<!-- You can add other main-page sections here if needed -->
+
+{% endblock %}

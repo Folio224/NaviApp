@@ -1,0 +1,24 @@
+# Secrets — NEVER commit these
+.env
+
+# Database (use managed DB or volume in production)
+*.db
+*.sqlite3
+
+# Virtual environments
+venv/
+myenv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Temp uploads
+temp_uploads/
+
+# IDE & OS
+.idea/
+.vscode/
+.DS_Store

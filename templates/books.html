@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block title %}Books - Navimind{% endblock %}
+
+{% block content %}
+
+<section class="interests-bar">
+    <div class="container">
+        <span class="interests-label">Your interests :</span>
+        <div class="interests-list" id="interestsDisplayArea">
+            <p class="text-muted">Loading interests...</p>
+        </div>
+        <button class="btn btn-secondary btn-small" id="manageInterestsBtn">
+            <i data-lucide="edit-3" class="btn-icon-small"></i>
+            Manage
+        </button>
+    </div>
+</section>
+
+<section class="products-section visible">
+    <div class="container">
+
+        <a href="#aiAnalyzerSection" class="scroll-hint-wrapper" style="margin-top: 0; margin-bottom: 2rem;">
+            <span class="scroll-hint-text">Need a Book Summary?</span>
+            <i data-lucide="chevrons-down" class="scroll-hint-icon"></i>
+        </a>
+
+        <h2 class="section-title"><i data-lucide="book-open" class="title-icon"></i> Digital Books</h2>
+        <p class="section-description">Explore our library of interactive books on AI, development, and more.</p>
+
+        <div class="product-grid">
+
+            <div class="product-card" data-pdf-url="{{ url_for('static', path='pdfs/The Anti-Paralysis Protocol.pdf') }}">
+                <div class="card-content-top">
+                    <i data-lucide="clipboard-list" class="card-icon"></i>
+                    <h3 class="card-title">WorkBook</h3>
+                    <p class="card-description">This is an Anti-Paralysis Protocol</p>
+                </div>
+                <div class="pdf-mini-slider">
+                    <div class="spinner-small"></div>
+                </div>
+                <button class="btn btn-primary btn-block read-book-btn"
+                        data-src="{{ url_for('static', path='pdfs/The Anti-Paralysis Protocol.pdf') }}">
+                    Start Reading
+                </button>
+            </div>
+
+            <div class="product-card" data-pdf-url="{{ url_for('static', path='pdfs/Knowledge Vault (bonus 1).pdf') }}">
+                <div class="card-content-top">
+                    <i data-lucide="archive" class="card-icon"></i>
+                    <h3 class="card-title">Knowledge Vault</h3>
+                    <p class="card-description">This is an Anti-Paralysis Protocol</p>
+                </div>
+                <div class="pdf-mini-slider">
+                    <div class="spinner-small"></div>
+                </div>
+                <button class="btn btn-primary btn-block read-book-btn"
+                        data-src="{{ url_for('static', path='pdfs/Knowledge Vault (bonus 1).pdf') }}">
+                    Start Reading
+                </button>
+            </div>
+
+            <div class="product-card" data-pdf-url="{{ url_for('static', path='pdfs/Advanced Trackers (Bonus 2).pdf') }}">
+                <div class="card-content-top">
+                    <i data-lucide="trending-up" class="card-icon"></i>
+                    <h3 class="card-title">Advanced Trackers</h3>
+                    <p class="card-description">This is an Anti-Paralysis Protocol</p>
+                </div>
+                <div class="pdf-mini-slider">
+                    <div class="spinner-small"></div>
+                </div>
+                <button class="btn btn-primary btn-block read-book-btn"
+                        data-src="{{ url_for('static', path='pdfs/Advanced Trackers (Bonus 2).pdf') }}">
+                    Start Reading
+                </button>
+            </div>
+
+        </div>
+
+        <div id="aiAnalyzerSection" class="summarize-section" style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+            <h3 class="section-title" style="font-size: 2rem;"><i data-lucide="book-check" class="title-icon"></i> AI Book Analysis</h3>
+            <p class="section-description">Upload a PDF to analyze it with AI.</p>
+
+            <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+                <input type="file" id="bookUploader" accept=".pdf">
+                <button class="btn btn-primary" id="summarizeButton">
+                    <i data-lucide="sparkles" class="btn-icon"></i>
+                    <span>Analyze File</span>
+                </button>
+            </div>
+
+            <pre id="summaryOutput" style="margin-top: 1.5rem; background: var(--color-bg-dark); padding: 1.5rem; border-radius: var(--radius-md); white-space: pre-wrap; word-wrap: break-word; color: var(--color-text-secondary); border: 1px solid rgba(255, 255, 255, 0.1); display: none;"></pre>
+        </div>
+
+        <div class="page-actions">
+            <button class="btn btn-primary" id="openCreateBookModalBtn">
+                <i data-lucide="plus" class="btn-icon"></i>
+                Create New Book
+            </button>
+        </div>
+    </div>
+</section>
+
+<div class="chat-modal-overlay" id="interestsModalOverlay">
+    <div class="chat-modal">
+        <div class="chat-modal-header">
+            <h2>Manage Your Interests</h2>
+            <button class="chat-close-btn" id="closeInterestsModalBtn"><i data-lucide="x"></i></button>
+        </div>
+        <div class="chat-modal-body" id="interestsModalBody">
+            <div class="interest-selection-list" id="interestSelectionList"></div>
+        </div>
+        <div class="chat-modal-footer">
+            <div class="custom-interest-adder">
+                <input type="text" id="customInterestInput" placeholder="Add custom interest...">
+                <button class="btn btn-primary btn-small" id="addCustomInterestBtn"><i data-lucide="plus"></i> Add</button>
+            </div>
+            <button class="btn btn-primary" id="doneInterestsModalBtn">Done</button>
+        </div>
+    </div>
+</div>
+
+<div class="chat-modal-overlay" id="createBookModalOverlay">
+    <div class="chat-modal">
+        <div class="chat-modal-header">
+            <h2>Create Your AI Book</h2>
+            <button class="chat-close-btn" id="closeCreateBookModalBtn"><i data-lucide="x"></i></button>
+        </div>
+        <div class="chat-modal-body">
+            <textarea id="bookPromptInput" class="prompt-textarea" placeholder="Describe your book..."></textarea>
+        </div>
+        <div class="chat-modal-footer">
+            <button class="btn btn-primary" id="generateBookBtn">Generate Book</button>
+        </div>
+    </div>
+</div>
+
+<div class="loader-overlay" id="loaderOverlay">
+    <div class="spinner"></div>
+    <p>Generating...</p>
+</div>
+
+<div class="chat-modal-overlay" id="bookResultModalOverlay">
+    <div class="chat-modal" id="bookResultModal">
+        <div class="chat-modal-header">
+            <h2>Your New Book</h2>
+            <button class="chat-close-btn" id="closeBookResultModalBtn"><i data-lucide="x"></i></button>
+        </div>
+        <div class="chat-modal-body" id="bookResultBody"></div>
+        <div class="chat-modal-footer">
+            <button class="btn btn-primary" id="doneBookResultModalBtn">Done</button>
+        </div>
+    </div>
+</div>
+
+<div class="chat-modal-overlay" id="pdfSliderOverlay">
+    <div class="chat-modal pdf-slider-modal">
+        <div class="chat-modal-header">
+            <h2>Book Reader</h2>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <span id="pageCounter" style="color: var(--color-text-muted); font-size: 0.9rem;">Loading...</span>
+                <button class="chat-close-btn" id="closePdfSliderBtn" aria-label="Close modal">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="pdf-slider-container" id="pdfSliderContainer"></div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+</script>
+
+{% endblock %}

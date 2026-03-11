@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Sign In - Navimind{% endblock %}
+
+{% block content %}
+
+<section class="auth-section">
+    <div class="auth-container">
+        <h2 class="auth-title">Welcome Back</h2>
+        <p class="auth-subtitle">Sign in to access your dashboard and books.</p>
+        
+        <!-- This form is now handled by main.js -->
+        <form id="loginForm" class="auth-form">
+            <div class="auth-form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" class="auth-input" required>
+            </div>
+            <div class="auth-form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="auth-input" required>
+            </div>
+            
+            <button type="submit" class="auth-button">Sign In</button>
+        </form>
+        
+        <p class="auth-switch-link">
+            Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a>
+        </p>
+    </div>
+</section>
+
+{% endblock %}
